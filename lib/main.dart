@@ -1,7 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Pages/LoginPage.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -11,14 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.lightBlueAccent,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Coding Cafe', style: TextStyle(fontSize: 26.0, color: Colors.white, fontWeight: FontWeight.bold),),
-        ),
-        body: Center(
-          child: Text('Welcome to Telegram Clone App', style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),),
-        ),
-      ),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
